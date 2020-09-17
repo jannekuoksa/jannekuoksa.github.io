@@ -1,0 +1,59 @@
+@font-face
+{
+    font-family: "MyFont";
+    src: url("Pixellari.ttf");
+
+}
+
+body
+{
+font-family: "MyFont", Helvetica,Arial,sans-serif;
+  margin: 0;
+  text-align: center;
+  background-color: #a1e6e3;
+}
+
+h1{
+font-size: 88px;
+}
+
+h2{
+font-size: 44px;
+}
+
+h3{
+font-size: 28px;
+}
+
+p
+{
+  font-size: 24px;
+}
+
+.top
+{
+  background-color: #d7fffd;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.motto
+{
+  font-size: 24px;
+}
+
+.middle
+{
+background-color: #a1e6e3;
+}
+
+.qmark
+{
+  height: 64px;
+}
+
+
+.bottom-
+{
+background-color: #a1e6e3;
+}
