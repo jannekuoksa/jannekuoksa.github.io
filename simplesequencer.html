@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <p>Kick</p>
+    <button id="k1" class="kick" onclick="toggleactive(this)">1</button>
+    <button id="k2" class="kick" onclick="toggleactive(this)">2</button>
+    <button id="k3" class="kick" onclick="toggleactive(this)">3</button>
+    <button id="k4" class="kick" onclick="toggleactive(this)">4</button>
+    <button id="k5" class="kick" onclick="toggleactive(this)">5</button>
+    <button id="k6" class="kick" onclick="toggleactive(this)">6</button>
+    <button id="k7" class="kick" onclick="toggleactive(this)">7</button>
+    <button id="k8" class="kick" onclick="toggleactive(this)">8</button>
+    <p>Snare</p>
+    <button id="s1" class="snare" onclick="toggleactive(this)">1</button>
+    <button id="s2" class="snare" onclick="toggleactive(this)">2</button>
+    <button id="s3" class="snare" onclick="toggleactive(this)">3</button>
+    <button id="s4" class="snare" onclick="toggleactive(this)">4</button>
+    <button id="s5" class="snare" onclick="toggleactive(this)">5</button>
+    <button id="s6" class="snare" onclick="toggleactive(this)">6</button>
+    <button id="s6" class="snare" onclick="toggleactive(this)">7</button>
+    <button id="s6" class="snare" onclick="toggleactive(this)">8</button>
+    <p>hihat</p>
+    <button id="h1" class="hihat" onclick="toggleactive(this)">1</button>
+    <button id="h2" class="hihat" onclick="toggleactive(this)">2</button>
+    <button id="h3" class="hihat" onclick="toggleactive(this)">3</button>
+    <button id="h4" class="hihat" onclick="toggleactive(this)">4</button>
+    <button id="h5" class="hihat" onclick="toggleactive(this)">5</button>
+    <button id="h6" class="hihat" onclick="toggleactive(this)">6</button>
+    <button id="h6" class="hihat" onclick="toggleactive(this)">7</button>
+    <button id="h6" class="hihat" onclick="toggleactive(this)">8</button>
+    <p>bassline</p>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">1</button>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">2</button>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">3</button>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">4</button>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">5</button>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">6</button>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">7</button>
+    <button id="h6" class="basslineA" onclick="toggleactive(this)">8</button>
+    <br>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">1</button>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">2</button>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">3</button>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">4</button>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">5</button>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">6</button>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">7</button>
+    <button id="h6" class="basslineB" onclick="toggleactive(this)">8</button>
+    
+    <button onclick="togglemusic(this)">Play</button>
+    <script>
+        var kick = document.getElementsByClassName("kick");
+        var snare = document.getElementsByClassName("snare");
+        var hihat = document.getElementsByClassName("hihat");
+        var basslineA = document.getElementsByClassName("basslineA");
+        var basslineB = document.getElementsByClassName("basslineB");
+
+        var kickaudio = new Audio('kick.wav');
+        var snareaudio = new Audio('snare.wav');
+        var hihataudio = new Audio('hihat.wav');
+        var bassaudioa = new Audio('bassa.wav');
+        var bassaudiob = new Audio('bassb.wav');
+
+        var interval;
+        var i = 0;
+
+        function toggleactive(obj) {
+            if (obj.classList.contains("on")) {
+                obj.classList.remove("on");
+                obj.style.backgroundColor = "#FFFFFF";
+            }
+            else {
+                obj.classList.add("on");
+                obj.style.backgroundColor = "#707070";
+
+            }
+        }
+        function togglemusic(obj) {
+            if (obj.classList.contains("on")) {
+                obj.classList.remove("on");
+                obj.style.backgroundColor = "#FFFFFF";
+                clearInterval(interval);
+            }
+            else {
+                obj.classList.add("on");
+                obj.style.backgroundColor = "#707070";
+                interval = setInterval(play, 300);
+            }
+
+
+        }
+        function play() {
+            if (i > kick.length - 1) i = 0;
+            if (i > 0) {
+                kick[i - 1].style.color = "black";
+                kick[i].style.color = "red";
+
+                snare[i - 1].style.color = "black";
+                snare[i].style.color = "red";
+
+                hihat[i - 1].style.color = "black";
+                hihat[i].style.color = "red";
+
+                basslineA[i - 1].style.color = "black";
+                basslineA[i].style.color = "red";
+
+                basslineB[i - 1].style.color = "black";
+                basslineB[i].style.color = "red";
+            }
+            else {
+                kick[kick.length - 1].style.color = "black";
+                kick[i].style.color = "red";
+
+                snare[snare.length - 1].style.color = "black";
+                snare[i].style.color = "red";
+
+                hihat[hihat.length - 1].style.color = "black";
+                hihat[i].style.color = "red";
+
+
+                basslineA[basslineA.length - 1].style.color = "black";
+                basslineA[i].style.color = "red";
+
+                
+                basslineB[basslineB.length - 1].style.color = "black";
+                basslineB[i].style.color = "red";
+            }
+            if (kick[i].classList.contains("on")) {
+                var audiocopy = kickaudio.cloneNode(true);
+                audiocopy.play();
+            }
+            if (snare[i].classList.contains("on")) {
+                var audiocopy = snareaudio.cloneNode(true);
+                audiocopy.play();
+            }
+            if (hihat[i].classList.contains("on")) {
+                var audiocopy = hihataudio.cloneNode(true);
+                audiocopy.play();
+            }
+            if (basslineA[i].classList.contains("on")) {
+                var audiocopy = bassaudioa.cloneNode(true);
+                audiocopy.play();
+            }
+            if (basslineB[i].classList.contains("on")) {
+                var audiocopy = bassaudiob.cloneNode(true);
+                audiocopy.play();
+            }
+            i++;
+        }
+
+
+    </script>
+</body>
