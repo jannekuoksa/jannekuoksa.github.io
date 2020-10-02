@@ -17,6 +17,7 @@
     <button id="button" class="kick" onclick="toggleactive(this)">6</button>
     <button id="button" class="kick" onclick="toggleactive(this)">7</button>
     <button id="button" class="kick" onclick="toggleactive(this)">8</button>
+    <input id="kick-vol" type="range" min="0" max="100" value="50">vol</input>
     <p>Snare</p>
     <button id="button" class="snare" onclick="toggleactive(this)">1</button>
     <button id="button" class="snare" onclick="toggleactive(this)">2</button>
@@ -26,6 +27,7 @@
     <button id="button" class="snare" onclick="toggleactive(this)">6</button>
     <button id="button" class="snare" onclick="toggleactive(this)">7</button>
     <button id="button" class="snare" onclick="toggleactive(this)">8</button>
+    <input id="snare-vol" type="range" min="0" max="100" value="50">vol</input>
     <p>hihat</p>
     <button id="button" class="hihat" onclick="toggleactive(this)">1</button>
     <button id="button" class="hihat" onclick="toggleactive(this)">2</button>
@@ -35,6 +37,7 @@
     <button id="button" class="hihat" onclick="toggleactive(this)">6</button>
     <button id="button" class="hihat" onclick="toggleactive(this)">7</button>
     <button id="button" class="hihat" onclick="toggleactive(this)">8</button>
+    <input id="hihat-vol" type="range" min="0" max="100" value="50">vol</input>
     <p>bassline</p>
     <button id="button" class="basslineA" onclick="toggleactive(this)">1</button>
     <button id="button" class="basslineA" onclick="toggleactive(this)">2</button>
@@ -53,20 +56,29 @@
     <button id="button" class="basslineB" onclick="toggleactive(this)">6</button>
     <button id="button" class="basslineB" onclick="toggleactive(this)">7</button>
     <button id="button" class="basslineB" onclick="toggleactive(this)">8</button>
+    <input id="bassline-vol" type="range" min="0" max="100" value="50">vol</input>
     <br>
     <button onclick="togglemusic(this)">Play</button>
     <script>
         var kick = document.getElementsByClassName("kick");
-        var snare = document.getElementsByClassName("snare");
-        var hihat = document.getElementsByClassName("hihat");
-        var basslineA = document.getElementsByClassName("basslineA");
-        var basslineB = document.getElementsByClassName("basslineB");
-
         var kickaudio = new Audio('kick.wav');
+
+        var snare = document.getElementsByClassName("snare");
         var snareaudio = new Audio('snare.wav');
+
+        var hihat = document.getElementsByClassName("hihat");
         var hihataudio = new Audio('hihat.wav');
+
+        var basslineA = document.getElementsByClassName("basslineA");
         var bassaudioa = new Audio('bassa.wav');
+
+        var basslineB = document.getElementsByClassName("basslineB");
         var bassaudiob = new Audio('bassb.wav');
+        
+
+
+
+       
 
         var interval;
         var i = 0;
@@ -134,22 +146,28 @@
             }
             if (kick[i].classList.contains("on")) {
                 var audiocopy = kickaudio.cloneNode(true);
+                audiocopy.volume = document.getElementById("kick-vol").value / 100;
                 audiocopy.play();
+                
             }
             if (snare[i].classList.contains("on")) {
                 var audiocopy = snareaudio.cloneNode(true);
+                audiocopy.volume = document.getElementById("snare-vol").value / 100;
                 audiocopy.play();
             }
             if (hihat[i].classList.contains("on")) {
                 var audiocopy = hihataudio.cloneNode(true);
+                audiocopy.volume = document.getElementById("hihat-vol").value / 100;
                 audiocopy.play();
             }
             if (basslineA[i].classList.contains("on")) {
                 var audiocopy = bassaudioa.cloneNode(true);
+                audiocopy.volume = document.getElementById("bassline-vol").value / 100;
                 audiocopy.play();
             }
             if (basslineB[i].classList.contains("on")) {
                 var audiocopy = bassaudiob.cloneNode(true);
+                audiocopy.volume = document.getElementById("bassline-vol").value / 100;
                 audiocopy.play();
             }
             i++;
