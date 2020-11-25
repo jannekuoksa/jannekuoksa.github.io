@@ -57,29 +57,31 @@
     <button id="button" class="basslineB" onclick="toggleactive(this)">7</button>
     <button id="button" class="basslineB" onclick="toggleactive(this)">8</button>
     <input id="bassline-vol" type="range" min="0" max="100" value="50">vol</input>
+    <textarea id="tempo"></textarea>
     <br>
     <button onclick="togglemusic(this)">Play</button>
+
     <script>
         var kick = document.getElementsByClassName("kick");
-        var kickaudio = new Audio('kick.wav');
+        var kickaudio = new Audio('audio/kick.wav');
 
         var snare = document.getElementsByClassName("snare");
-        var snareaudio = new Audio('snare.wav');
+        var snareaudio = new Audio('audio/snare.wav');
 
         var hihat = document.getElementsByClassName("hihat");
-        var hihataudio = new Audio('hihat.wav');
+        var hihataudio = new Audio('audio/hihat.wav');
 
         var basslineA = document.getElementsByClassName("basslineA");
-        var bassaudioa = new Audio('bassa.wav');
+        var bassaudioa = new Audio('audio/bassa.wav');
 
         var basslineB = document.getElementsByClassName("basslineB");
-        var bassaudiob = new Audio('bassb.wav');
+        var bassaudiob = new Audio('audio/bassb.wav');
+
+
         
 
 
-
        
-
         var interval;
         var i = 0;
 
@@ -103,6 +105,7 @@
             else {
                 obj.classList.add("on");
                 obj.style.backgroundColor = "#707070";
+                var speed = document.getElementById("tempo").value
                 interval = setInterval(play, 300);
             }
 
@@ -170,7 +173,61 @@
                 audiocopy.volume = document.getElementById("bassline-vol").value / 100;
                 audiocopy.play();
             }
-            i++;
+            
+
+window.addEventListener("keydown", function (event) {
+  if (event.defaultPrevented) {
+    return; 
+  }
+
+  switch (event.key) {
+    case "z":
+    if (kick[i].classList.contains("on")) {
+                kick[i].classList.remove("on");
+                kick[i].style.backgroundColor = "#FFFFFF";
+            }
+            else {
+                kick[i].classList.add("on");
+                kick[i].style.backgroundColor = "#707070";
+
+            }
+
+      break;
+    case "x":
+    if (snare[i].classList.contains("on")) {
+                snare[i].classList.remove("on");
+                snare[i].style.backgroundColor = "#FFFFFF";
+            }
+            else {
+                snare[i].classList.add("on");
+                snare[i].style.backgroundColor = "#707070";
+
+            }
+
+      break;
+    case "c":
+    if (hihat[i].classList.contains("on")) {
+                hihat[i].classList.remove("on");
+                hihat[i].style.backgroundColor = "#FFFFFF";
+            }
+            else {
+                hihat[i].classList.add("on");
+                hihat[i].style.backgroundColor = "#707070";
+
+            }
+
+      break;
+
+    default:
+      return; 
+  }
+
+  // Cancel the default action to avoid it being handled twice
+  event.preventDefault();
+}, true);
+
+        
+        i++;
         }
 
 
